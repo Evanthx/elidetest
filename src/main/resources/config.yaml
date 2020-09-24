@@ -1,0 +1,48 @@
+## Default application configuration
+
+workerConfiguration:
+
+#See the WorkerConfiguration class to see where the fields are read in. Note that if you nest
+#a yaml structure here, that will be deserialized into a subclass of WorkerConfiguration,
+#which lets you intelligently organize your configuration data.
+  test: hello
+
+  #The next line is for Swagger
+  resourcePackage: com.usermind.elidetest
+
+#Hopefully soon we can tell Swagger not to scan every file -
+#https://github.com/swagger-api/swagger-core/issues/2631
+
+server:
+  applicationConnectors:
+    - type: http
+      port: 8089
+
+  adminConnectors:
+    - type: http
+      port: 8090
+
+logging:
+  level: INFO
+  loggers:
+    "com.usermind": INFO
+    "org.apache.http.wire" : ERROR
+    "org.apache.http.headers" : ERROR
+    "org.reflections" : ERROR
+  appenders:
+    - type: console
+      target: stdout
+# This logs in JSON which does nice things for ElasticSearch and other tools. If you don't want to log in JSON,
+# uncomment the two lines below and remove the Layout section.
+#      timeZone: UTC
+#      logFormat: "%-5p [%d{ISO8601, UTC}] [%thread] %c: %m%n%xEx"
+#
+# https://www.dropwizard.io/1.3.2/docs/manual/core.html#json-log-format for info on Dropwizard JSON logging
+# https://www.dropwizard.io/1.3.2/docs/manual/configuration.html as well
+      layout:
+        type: json
+        timestampFormat: "ISO_INSTANT"
+        prettyPrint: false
+        appendLineSeparator: true
+        additionalFields:
+            elasticsearch-index: "elidetest"

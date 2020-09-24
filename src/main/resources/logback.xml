@@ -1,0 +1,15 @@
+<!-- This is intended solely as a conveniently configurable way of logging
+     to STDOUT before dropwizard's LoggingFactory takes over and reconfigures -->
+<configuration>
+  <property name="rootLevel" value="${log.root.level:-WARN}"/>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%-5p [%d{ISO8601}] %c: %m\n%ex</pattern>
+    </encoder>
+  </appender>
+
+  <root level="${rootLevel}">
+    <appender-ref ref="STDOUT" />
+  </root>
+</configuration>
