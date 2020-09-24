@@ -7,7 +7,7 @@ I was trying to make it work with a Noop Data Store as our data queries will nee
 I am using a base pom, so to share this I just got the effective pom and used it. I am running it in IntelliJ with the arguments 
 ```server src/main/resources/config.yaml ```
 
-It runs on port 8089. That comes up, I can see the dictionary having the test classes, but can't get any Elide URLs to work. I also tried bringing the Elide standalone server code in and just running a second Jetty on a second port just to see if that would work. It comes up, but on the Elide port I just see "Failed to load API definition" errors.
+**It runs on port 8089.** That comes up, I can see the dictionary having the test classes, but can't get any Elide URLs to work. I also tried bringing the Elide standalone server code in and just running a second Jetty on a second port just to see if that would work. It comes up, but on the Elide port I just see "Failed to load API definition" errors.
 
 For the comments below, all packages/classes are under the com.usermind.elidetest package.
 
